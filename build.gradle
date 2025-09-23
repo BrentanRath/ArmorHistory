@@ -41,21 +41,27 @@ tasks {
         
         // Relocate dependencies to avoid conflicts
         relocate 'org.sqlite', 'gay.bunnie.armorhistory.libs.sqlite'
-        
-        // Include runtime dependencies but exclude provided ones
+
         dependencies {
             exclude(dependency('io.papermc.paper:.*'))
             exclude(dependency('com.github.MilkBowl:.*'))
         }
+
+        exclude 'org/sqlite/native/**'
+        exclude '**/native/**'
+        exclude '**/*.so'
+        exclude '**/*.dll'
+        exclude '**/*.dylib'
+        exclude '**/*.jnilib'
+
+        minimize()
     }
-    
-    // Make the default build task depend on shadowJar
+
     build {
         dependsOn shadowJar
     }
 }
 
-// Task to print version for CI/CD
 tasks.register('printVersion') {
     doLast {
         println project.version

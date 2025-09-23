@@ -34,6 +34,11 @@ jobs:
       - name: Build with Gradle (create shadow JAR)
         run: ./gradlew shadowJar
 
+      - name: List build artifacts
+        run: |
+          echo "Contents of build/libs:"
+          ls -la build/libs/ || echo "build/libs directory not found"
+
       - name: Get version from gradle
         id: get_version
         run: |

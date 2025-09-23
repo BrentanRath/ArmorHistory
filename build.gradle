@@ -53,12 +53,12 @@ tasks {
     build {
         dependsOn shadowJar
     }
-    
-    // Task to print version for CI/CD
-    register('printVersion') {
-        doLast {
-            println project.version
-        }
+}
+
+// Task to print version for CI/CD
+tasks.register('printVersion') {
+    doLast {
+        println project.version
     }
 }
 

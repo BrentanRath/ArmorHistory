@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CopilotDiffPersistence">
+    <option name="pendingDiffs">
+      <map>
+        <entry key="$PROJECT_DIR$/src/main/resources/config.yml">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/src/main/resources/config.yml" />
+              <option name="originalContent" value="remove-cost: 1000&#10;plugin-name: &quot;ArmorHistory&quot;&#10;date-format: &quot;yyyy-MM-dd HH:mm:ss&quot;&#10;&#10;# List of materials that can be claimed&#10;claimable-items:&#10;  # Swords&#10;  - DIAMOND_SWORD&#10;  - NETHERITE_SWORD&#10;  - GOLDEN_SWORD&#10;  - IRON_SWORD&#10;  - STONE_SWORD&#10;  - WOODEN_SWORD&#10;  # Pickaxes&#10;  - DIAMOND_PICKAXE&#10;  - NETHERITE_PICKAXE&#10;  - GOLDEN_PICKAXE&#10;  - IRON_PICKAXE&#10;  - STONE_PICKAXE&#10;  - WOODEN_PICKAXE&#10;  # Helmets&#10;  - DIAMOND_HELMET&#10;  - NETHERITE_HELMET&#10;  - GOLDEN_HELMET&#10;  - IRON_HELMET&#10;  - CHAINMAIL_HELMET&#10;  - LEATHER_HELMET&#10;  - TURTLE_HELMET&#10;  # Chestplates&#10;  - DIAMOND_CHESTPLATE&#10;  - NETHERITE_CHESTPLATE&#10;  - GOLDEN_CHESTPLATE&#10;  - IRON_CHESTPLATE&#10;  - CHAINMAIL_CHESTPLATE&#10;  - LEATHER_CHESTPLATE&#10;  # Leggings&#10;  - DIAMOND_LEGGINGS&#10;  - NETHERITE_LEGGINGS&#10;  - GOLDEN_LEGGINGS&#10;  - IRON_LEGGINGS&#10;  - CHAINMAIL_LEGGINGS&#10;  - LEATHER_LEGGINGS&#10;  # Boots&#10;  - DIAMOND_BOOTS&#10;  - NETHERITE_BOOTS&#10;  - GOLDEN_BOOTS&#10;  - IRON_BOOTS&#10;  - CHAINMAIL_BOOTS&#10;  - LEATHER_BOOTS&#10;  # Special&#10;  - ELYTRA" />
+              <option name="updatedContent" value="remove-cost: 1000&#10;plugin-name: &quot;ArmorHistory&quot;&#10;date-format: &quot;yyyy-MM-dd HH:mm:ss&quot;&#10;&#10;# List of materials that can be claimed&#10;claimable-items:&#10;  # Swords&#10;  - DIAMOND_SWORD&#10;  - NETHERITE_SWORD&#10;  - GOLDEN_SWORD&#10;  - IRON_SWORD&#10;  - STONE_SWORD&#10;  - WOODEN_SWORD&#10;  # Pickaxes&#10;  - DIAMOND_PICKAXE&#10;  - NETHERITE_PICKAXE&#10;  - GOLDEN_PICKAXE&#10;  - IRON_PICKAXE&#10;  - STONE_PICKAXE&#10;  - WOODEN_PICKAXE&#10;  # Helmets&#10;  - DIAMOND_HELMET&#10;  - NETHERITE_HELMET&#10;  - GOLDEN_HELMET&#10;  - IRON_HELMET&#10;  - CHAINMAIL_HELMET&#10;  - LEATHER_HELMET&#10;  - TURTLE_HELMET&#10;  # Chestplates&#10;  - DIAMOND_CHESTPLATE&#10;  - NETHERITE_CHESTPLATE&#10;  - GOLDEN_CHESTPLATE&#10;  - IRON_CHESTPLATE&#10;  - CHAINMAIL_CHESTPLATE&#10;  - LEATHER_CHESTPLATE&#10;  # Leggings&#10;  - DIAMOND_LEGGINGS&#10;  - NETHERITE_LEGGINGS&#10;  - GOLDEN_LEGGINGS&#10;  - IRON_LEGGINGS&#10;  - CHAINMAIL_LEGGINGS&#10;  - LEATHER_LEGGINGS&#10;  # Boots&#10;  - DIAMOND_BOOTS&#10;  - NETHERITE_BOOTS&#10;  - GOLDEN_BOOTS&#10;  - IRON_BOOTS&#10;  - CHAINMAIL_BOOTS&#10;  - LEATHER_BOOTS&#10;  # Special&#10;  - ELYTRA" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

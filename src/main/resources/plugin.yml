@@ -1,0 +1,17 @@
+name: armorhistory
+version: '1.0-SNAPSHOT'
+main: gay.bunnie.armorhistory.Armorhistory
+api-version: '1.21'
+author: Brentan Rath
+depend: [Vault]
+
+commands:
+  claimitem:
+    description: Claim the item in your hand.
+    usage: /claimitem
+  removeclaim:
+    description: Remove the most recent claim (costs money).
+    usage: /removeclaim
+  armorhistory:
+    description: Help command for ArmorHistory.
+    usage: /armorhistory help

@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'maven-publish'
     id("xyz.jpenilla.run-paper") version "2.3.1"
 }
 
@@ -57,5 +58,51 @@ processResources {
     filteringCharset 'UTF-8'
     filesMatching('plugin.yml') {
         expand props
+    }
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+
+            pom {
+                name = 'ArmorHistory'
+                description = 'A Minecraft plugin for tracking item ownership history'
+                url = 'https://github.com/YOUR_USERNAME/ArmorHistory'
+
+                licenses {
+                    license {
+                        name = 'MIT License'
+                        url = 'https://opensource.org/licenses/MIT'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id = 'bunnie'
+                        name = 'Bunnie'
+                        email = 'your.email@example.com'
+                    }
+                }
+
+                scm {
+                    connection = 'scm:git:git://github.com/YOUR_USERNAME/ArmorHistory.git'
+                    developerConnection = 'scm:git:ssh://github.com:YOUR_USERNAME/ArmorHistory.git'
+                    url = 'https://github.com/YOUR_USERNAME/ArmorHistory'
+                }
+            }
+        }
+    }
+
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/YOUR_USERNAME/ArmorHistory")
+            credentials {
+                username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
+                password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
+            }
+        }
     }
 }

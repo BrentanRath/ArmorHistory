@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'maven-publish'
     id("xyz.jpenilla.run-paper") version "2.3.1"
+    id 'com.gradleup.shadow' version '8.3.5'
 }
 
 group = 'gay.bunnie'
@@ -31,6 +32,33 @@ tasks {
         // This is the only required configuration besides applying the plugin.
         // Your plugin's jar (or shadowJar if present) will be used automatically.
         minecraftVersion("1.21")
+    }
+    
+    shadowJar {
+        archiveBaseName.set('ArmorHistory')
+        archiveClassifier.set('')
+        archiveVersion.set(project.version.toString())
+        
+        // Relocate dependencies to avoid conflicts
+        relocate 'org.sqlite', 'gay.bunnie.armorhistory.libs.sqlite'
+        
+        // Include runtime dependencies but exclude provided ones
+        dependencies {
+            exclude(dependency('io.papermc.paper:.*'))
+            exclude(dependency('com.github.MilkBowl:.*'))
+        }
+    }
+    
+    // Make the default build task depend on shadowJar
+    build {
+        dependsOn shadowJar
+    }
+    
+    // Task to print version for CI/CD
+    register('printVersion') {
+        doLast {
+            println project.version
+        }
     }
 }
 

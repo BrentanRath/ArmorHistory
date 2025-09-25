@@ -5,6 +5,7 @@ import gay.bunnie.armorhistory.commands.RemoveClaimCommand;
 import gay.bunnie.armorhistory.commands.HelpCommand;
 import gay.bunnie.armorhistory.database.DatabaseManager;
 import gay.bunnie.armorhistory.util.ItemUtils;
+import gay.bunnie.armorhistory.events.PlayerJoinEventListener;
 
 
 import net.milkbowl.vault.economy.Economy;
@@ -35,6 +36,7 @@ public final class Armorhistory extends JavaPlugin {
         getCommand("claimitem").setExecutor(new ClaimItemCommand(this));
         getCommand("removeclaim").setExecutor(new RemoveClaimCommand(this));
         getCommand("armorhistory").setExecutor(new HelpCommand(this));
+        getServer().getPluginManager().registerEvents(new PlayerJoinEventListener(), this);
 
         getLogger().info("ArmorHistory enabled!");
     }

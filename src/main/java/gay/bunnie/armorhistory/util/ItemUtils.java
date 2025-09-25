@@ -42,7 +42,6 @@ public class ItemUtils {
         return item != null && claimableMaterials.contains(item.getType());
     }
 
-    // Changed return type to ClaimResult to represent different outcomes
     public static ClaimResult addClaim(ItemStack item, String playerName) {
         if (!isClaimable(item)) return ClaimResult.NOT_CLAIMABLE;
 

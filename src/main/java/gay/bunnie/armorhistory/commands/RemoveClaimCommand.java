@@ -2,8 +2,13 @@ package gay.bunnie.armorhistory.commands;
 
 import gay.bunnie.armorhistory.Armorhistory;
 import gay.bunnie.armorhistory.util.ItemUtils;
+import gay.bunnie.armorhistory.util.MessageUtils;
+
+
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
+
+
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -21,24 +26,40 @@ public class RemoveClaimCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (!(sender instanceof Player player)) {
-            sender.sendMessage(Component.text("Only players can use this command.", NamedTextColor.RED));
+            sender.sendMessage(
+                MessageUtils.prefix(
+                    Component.text("Only players can use this command.", NamedTextColor.RED)
+                )
+            );
             return true;
         }
 
         double cost = plugin.getConfig().getDouble("remove-cost");
         if (Armorhistory.getEconomy().getBalance(player) < cost) {
-            player.sendMessage(Component.text("You need " + String.format("%.2f", cost) + " currency to remove a claim.", NamedTextColor.RED));
+            sender.sendMessage(
+                MessageUtils.prefix(
+                    Component.text("You need " + String.format("%.2f", cost) + " currency to remove a claim.", NamedTextColor.RED)
+                )
+            );
             return true;
         }
 
         ItemStack item = player.getInventory().getItemInMainHand();
         if (!ItemUtils.removeClaim(item)) {
-            player.sendMessage(Component.text("This item has no claims to remove.", NamedTextColor.RED));
+            sender.sendMessage(
+                MessageUtils.prefix(
+                    Component.text("This item has no claims to remove.", NamedTextColor.RED)
+                )
+            );
             return true;
         }
 
         Armorhistory.getEconomy().withdrawPlayer(player, cost);
-        player.sendMessage(NamedTextColor.GREEN + "Removed the most recent claim for " + String.format("%.2f", cost) + " currency.");
+        sender.sendMessage(
+                MessageUtils.prefix(
+                    Component.text("Removed the most recent claim for " + String.format("%.2f", cost) + " currency.", NamedTextColor.GREEN)
+                )
+            );
         return true;
     }
 }

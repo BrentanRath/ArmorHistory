@@ -42,14 +42,20 @@ public class ItemUtils {
         return item != null && claimableMaterials.contains(item.getType());
     }
 
-    public static boolean addClaim(ItemStack item, String playerName) {
-        if (!isClaimable(item)) return false;
+    // Changed return type to ClaimResult to represent different outcomes
+    public static ClaimResult addClaim(ItemStack item, String playerName) {
+        if (!isClaimable(item)) return ClaimResult.NOT_CLAIMABLE;
 
         String itemUUID = getOrCreateItemUUID(item);
         DatabaseManager dbManager = Armorhistory.getInstance().getDatabaseManager();
 
         if (dbManager.getClaimCount(itemUUID) >= 3) {
-            return false;
+            return ClaimResult.TOO_MANY_CLAIMS;
+        }
+
+        DatabaseManager.ClaimRecord mostRecent = dbManager.getMostRecentClaim(itemUUID);
+        if (mostRecent != null && mostRecent.getPlayerName().equalsIgnoreCase(playerName)) {
+            return ClaimResult.CONSECUTIVE_NOT_ALLOWED;
         }
 
         String dateFormat = Armorhistory.getInstance().getConfig().getString("date-format", "yyyy-MM-dd HH:mm:ss");
@@ -58,8 +64,9 @@ public class ItemUtils {
         boolean success = dbManager.addClaim(itemUUID, playerName, timestamp);
         if (success) {
             updateItemLore(item);
+            return ClaimResult.SUCCESS;
         }
-        return success;
+        return ClaimResult.FAILURE;
     }
 
     public static boolean removeClaim(ItemStack item) {
@@ -130,5 +137,13 @@ public class ItemUtils {
 
         meta.lore(lore);
         item.setItemMeta(meta);
+    }
+
+    public enum ClaimResult {
+        SUCCESS,
+        TOO_MANY_CLAIMS,
+        CONSECUTIVE_NOT_ALLOWED,
+        NOT_CLAIMABLE,
+        FAILURE
     }
 }

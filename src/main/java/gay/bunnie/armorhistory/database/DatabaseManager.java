@@ -134,6 +134,24 @@ public class DatabaseManager {
     public boolean hasClaims(String itemUUID) {
         return getClaimCount(itemUUID) > 0;
     }
+    public ClaimRecord getMostRecentClaim(String itemUUID) {
+        String sql = """
+            SELECT player_name, claim_timestamp FROM claims
+            WHERE item_uuid = ?
+            ORDER BY id DESC
+            LIMIT 1
+            """;
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setString(1, itemUUID);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return new ClaimRecord(rs.getString("player_name"), rs.getString("claim_timestamp"));
+            }
+        } catch (SQLException e) {
+            plugin.getLogger().warning("Failed to get most recent claim: " + e.getMessage());
+        }
+        return null;
+    }
 
     public static class ClaimRecord {
         private final String playerName;

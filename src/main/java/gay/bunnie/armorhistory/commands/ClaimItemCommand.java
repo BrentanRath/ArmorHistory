@@ -7,7 +7,7 @@ import gay.bunnie.armorhistory.util.MessageUtils;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
-import net.kyori.adventure.text.format.TextDecoration; //
+import net.kyori.adventure.text.format.TextDecoration;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
